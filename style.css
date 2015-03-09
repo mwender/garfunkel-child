@@ -1,0 +1,44 @@
+/*
+ Theme Name:   Garfunkel Child
+ Theme URI:    http://mwender.com
+ Description:  Garfunkel Child Theme
+ Author:       Michael Wender
+ Author URI:   http://mwender.com
+ Template:     garfunkel
+ Version:      1.0.0
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ Text Domain:  garfunkel-child
+*/
+@import url(../garfunkel/style.css);
+.format-link .post-header{
+	display: none;
+}
+.format-link .post-link a{
+	text-transform: none;
+	font-weight: 500;
+	font-size: 0.9em;
+}
+.format-link .post-link a:hover span{
+	text-decoration: none;
+}
+.format-link .post-link a:before{
+	content: none;
+}
+.format-link .post-link a span{
+	text-transform: uppercase;
+	display: block;
+	margin-left: -4px;
+	margin-top: -8px;
+	font-weight: bold;
+	font-size: 0.8em;
+}
+.format-link .post-link a span:before{
+	font: 30px/1 'Genericons';
+	content: '\f107';
+	position: relative;
+	bottom: -11px;
+}
+.menu-social li a[href*="feed."]::before {
+	content: '\f413';
+}
