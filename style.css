@@ -39,6 +39,9 @@
 	position: relative;
 	bottom: -11px;
 }
+.menu-social li.email a::before{
+	content: '\f410';
+}
 .menu-social li a[href*="feed."]::before,
 .menu-social li a[href*="/feed/"]::before {
 	content: '\f413';
