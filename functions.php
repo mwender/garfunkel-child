@@ -1,5 +1,18 @@
 <?php
 /**
+ * Initializes the theme
+ *
+ * @since 1.0.0
+ *
+ * @return void
+ */
+function garfunkel_child_theme_setup(){
+	add_filter( 'the_excerpt_rss', 'garfunkel_child_rss_post_thumbnail' );
+	add_filter( 'the_content_feed', 'garfunkel_child_rss_post_thumbnail' );
+}
+add_action( 'after_setup_theme', 'garfunkel_child_theme_setup' );
+
+/**
  * Enqueue scripts and styles.
  *
  * @since 1.0.0
@@ -18,4 +31,23 @@ function garfunkel_child_enqueue_scripts(){
     wp_enqueue_style( 'garfunkel_style' );
 }
 add_action( 'wp_enqueue_scripts', 'garfunkel_child_enqueue_scripts' );
+
+/**
+ * Adds a post’s featured image to the RSS feed content
+ *
+ * @since 1.0.0
+ *
+ * @param string $content Post content.
+ * @return string Modified post content.
+ */
+function garfunkel_child_rss_post_thumbnail( $content ){
+	global $post;
+
+	if( has_post_thumbnail( $post->ID ) ){
+		$featured_image = get_the_post_thumbnail( $post->ID, 'large', array( 'title' => esc_attr( get_the_title( $post->ID ) ), 'style' => 'width: 100%; height: auto; max-width: 600px' ) );
+		$content = '<p class="featured-image">'.$featured_image.'</p>' . $content;
+	}
+
+	return $content;
+}
 ?>
