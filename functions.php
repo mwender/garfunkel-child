@@ -44,7 +44,7 @@ function garfunkel_child_rss_post_thumbnail( $content ){
 	global $post;
 
 	if( has_post_thumbnail( $post->ID ) ){
-		$featured_image = get_the_post_thumbnail( $post->ID, 'large', array( 'title' => esc_attr( get_the_title( $post->ID ) ), 'style' => 'width: 100%; height: 100%; max-width: 600px' ) );
+		$featured_image = get_the_post_thumbnail( $post->ID, 'large', array( 'title' => esc_attr( get_the_title( $post->ID ) ), 'style' => 'max-width: 560px' ) );
 		$content = '<p class="featured-image">'.$featured_image.'</p>' . $content;
 	}
 
