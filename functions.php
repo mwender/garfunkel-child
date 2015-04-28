@@ -44,7 +44,19 @@ function garfunkel_child_rss_post_thumbnail( $content ){
 	global $post;
 
 	if( has_post_thumbnail( $post->ID ) ){
-		$featured_image = get_the_post_thumbnail( $post->ID, 'large', array( 'title' => esc_attr( get_the_title( $post->ID ) ), 'style' => 'max-width: 560px; display: block; height: auto; margin: 0 auto 10px auto;' ) );
+		// scale image proportionally to 560px wide
+		$img_id = get_post_thumbnail_id( $post->ID );
+
+		$img = wp_get_attachment_image_src( $img_id, 'large' );
+		$url = $img[0];
+		$width = $img[1];
+		$height = $img[2];
+
+		$new_width = 560;
+		$new_height = intval( ( $new_width * $height ) / $width );
+
+		$featured_image = '<img src="' . $url . '" width="' . $new_width . '" height="' . $new_height . '" title="' . esc_attr( get_the_title( $post->ID ) ) . '" style="display: block; margin: 0 auto 10px auto;" />';
+
 		$content = $featured_image . $content;
 	}
 
