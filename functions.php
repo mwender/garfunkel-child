@@ -55,7 +55,7 @@ function garfunkel_child_rss_post_thumbnail( $content ){
 		$new_width = 560;
 		$new_height = intval( ( $new_width * $height ) / $width );
 
-		$featured_image = '<img src="' . $url . '" width="' . $new_width . '" height="' . $new_height . '" title="' . esc_attr( get_the_title( $post->ID ) ) . '" style="display: block; margin: 0 auto 10px auto;" />';
+		$featured_image = '<a href="' . get_permalink( $post->ID ) . '"><img src="' . $url . '" width="' . $new_width . '" height="' . $new_height . '" title="' . esc_attr( get_the_title( $post->ID ) ) . '" style="display: block; margin: 0 auto 10px auto;" /></a>';
 
 		$content = $featured_image . $content;
 	}
