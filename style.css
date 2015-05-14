@@ -39,6 +39,15 @@
 	position: relative;
 	bottom: -11px;
 }
+img.alignleft,
+.alignleft img,
+img.aligncenter,
+.aligncenter img,
+img.alignright,
+.alignright img{
+	padding: 0;
+	border: none;
+}
 .menu-social li.email a::before{
 	content: '\f410';
 }
