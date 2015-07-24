@@ -11,6 +11,21 @@
  Text Domain:  garfunkel-child
 */
 @import url(../garfunkel/style.css);
+/* Header
+--------------------------------- */
+.bg-shader.master{
+	background: rgba(0,0,0,0.6);
+	z-index: -1;
+}
+.bg-image.master{
+	top: -180px;
+	z-index: -2;
+}
+.home_first_page .title-section .section-inner,
+.title-section .section-inner{
+	padding: 60px 0;
+}
+
 .format-link .post-header{
 	display: none;
 }
