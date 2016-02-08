@@ -33,6 +33,33 @@ function garfunkel_child_enqueue_scripts(){
 add_action( 'wp_enqueue_scripts', 'garfunkel_child_enqueue_scripts' );
 
 /**
+ * Add search to social menu.
+ */
+function garfunkel_child_header_search(){
+	?>
+<style type="text/css">
+.search-wrap{position: absolute; right: 46px; width: 220px; display: none; z-index: 999; overflow: hidden;}
+.social-search .search-field{padding: 4px 10px;}
+</style>
+<script type="text/javascript">
+jQuery(document).ready(function($){
+	$('div.menu-social li.search a').prepend('<div class="search-wrap"><form method="get" class="search-form social-search" action="<?php echo esc_url( home_url( '/' ) ) ?>"><input type="search" value="" placeholder="Enter search..." name="s" class="search-field" id="social-search-field"></form></div>');
+	$('div.menu-social li.search a').click(function(e){
+		e.preventDefault();
+		$('.search-wrap').slideToggle();
+	});
+	$('.social-search').parent().bind('click',function(e){
+		if(e){
+			e.stopPropagation();
+		}
+	});
+});
+</script>
+	<?php
+}
+add_action( 'wp_head', 'garfunkel_child_header_search' );
+
+/**
  * Adds a post’s featured image to the RSS feed content
  *
  * @since 1.0.0
